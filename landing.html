@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HashTap B2B · Partner Programı</title>
+<meta name="description" content="HashTap B2B Partner Programı. Yerel yazılım firmaları için %30–40 garantili margin, 4 paket, lifetime lisans.">
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+<style>
+  :root {
+    --bg-0: #0A0E1A;
+    --bg-glass: rgba(255,255,255,0.06);
+    --bg-glass-strong: rgba(255,255,255,0.10);
+    --border-subtle: rgba(255,255,255,0.08);
+    --border-default: rgba(255,255,255,0.14);
+    --text-primary: #F5F6FA;
+    --text-secondary: #A6ACC0;
+    --text-muted: #6B7089;
+    --brand-500: #FF7A00;
+    --brand-400: #FF9A3D;
+    --brand-glow: rgba(255,122,0,0.35);
+    --success: #4ADE80;
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    background-image:
+      radial-gradient(ellipse 1200px 900px at 15% 0%, rgba(255,122,0,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 1000px 800px at 85% 100%, rgba(94,234,212,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0E1426 0%, #0A0E1A 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--brand-500); color: #0A0E1A; }
+
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: rgba(10,14,26,0.72);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  nav .inner { max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+  nav .logo { display: flex; align-items: center; gap: 12px; }
+  nav .logo svg { width: 32px; height: 32px; }
+  nav .logo .wm { font-weight: 800; letter-spacing: -0.02em; font-size: 19px; }
+  nav .logo .tag { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; padding-left: 12px; margin-left: 12px; border-left: 1px solid var(--border-default); }
+  nav .links { display: flex; gap: 32px; align-items: center; font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+  nav .links a:hover { color: var(--text-primary); }
+  nav .cta {
+    background: var(--brand-500); color: #0A0E1A !important;
+    padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: 14px;
+    transition: background 0.2s;
+  }
+  nav .cta:hover { background: var(--brand-400); }
+  @media (max-width: 760px) {
+    nav .links a:not(.cta) { display: none; }
+    nav .logo .tag { display: none; }
+  }
+
+  /* HERO */
+  .hero { padding: 96px 0 120px; position: relative; }
+  .hero .pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+    background: rgba(255,122,0,0.12); border: 1px solid rgba(255,122,0,0.28);
+    color: var(--brand-400);
+    margin-bottom: 32px;
+  }
+  .hero .pill .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--brand-500); box-shadow: 0 0 12px var(--brand-glow); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+  .hero h1 {
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+    text-wrap: pretty;
+  }
+  .hero h1 .accent { color: var(--brand-500); }
+  .hero .sub {
+    margin-top: 28px;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 58ch;
+    font-weight: 400;
+  }
+  .hero .cta-row { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 26px; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    transition: transform 0.15s, background 0.2s, border-color 0.2s;
+    cursor: pointer; border: none;
+    letter-spacing: -0.01em;
+  }
+  .btn.primary { background: var(--brand-500); color: #0A0E1A; }
+  .btn.primary:hover { background: var(--brand-400); transform: translateY(-1px); }
+  .btn.secondary { background: var(--bg-glass); color: var(--text-primary); border: 1px solid var(--border-default); backdrop-filter: blur(20px); }
+  .btn.secondary:hover { border-color: var(--border-default); background: var(--bg-glass-strong); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* HERO KPI ROW */
+  .kpi-row { margin-top: 80px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 40px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .kpi .v { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .kpi .v .unit { font-size: 22px; color: var(--text-muted); margin-left: 4px; font-weight: 600; }
+  .kpi .l { font-size: 14px; color: var(--text-secondary); margin-top: 10px; letter-spacing: -0.005em; }
+  .kpi .v.brand { color: var(--brand-500); }
+  @media (max-width: 760px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+
+  /* SECTION */
+  section.block { padding: 96px 0; }
+  .eyebrow {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--brand-500); margin-bottom: 20px;
+  }
+  h2.section-title {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1.05; text-wrap: pretty;
+    max-width: 20ch;
+  }
+  h2.section-title .accent { color: var(--brand-500); }
+  .section-sub { font-size: 19px; line-height: 1.55; color: var(--text-secondary); max-width: 56ch; margin-top: 20px; }
+
+  /* WHY / VALUE PROP */
+  .value-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .value-grid { grid-template-columns: 1fr; } }
+  .value-card {
+    padding: 36px;
+    border-radius: 20px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(20px);
+  }
+  .value-card .ic {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,122,0,0.12);
+    border: 1px solid rgba(255,122,0,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand-500); font-weight: 800; font-size: 20px;
+    font-family: var(--font-mono);
+    margin-bottom: 20px;
+  }
+  .value-card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 10px; }
+  .value-card p { font-size: 16px; color: var(--text-secondary); line-height: 1.55; }
+
+  /* PACKAGES PREVIEW */
+  .pkg-preview { margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 1100px) { .pkg-preview { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pkg-preview { grid-template-columns: 1fr; } }
+  .pp {
+    padding: 28px 24px;
+    border-radius: 18px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+  }
+  .pp.full { border-color: rgba(255,122,0,0.25); }
+  .pp .lic-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    white-space: nowrap;
+  }
+  .pp .lic-tag.ltd { background: rgba(166,172,192,0.08); border: 1px solid var(--border-default); color: var(--text-secondary); }
+  .pp .lic-tag.fll { background: rgba(255,122,0,0.15); border: 1px solid rgba(255,122,0,0.4); color: var(--brand-400); }
+  .pp .letter { font-family: var(--font-mono); font-size: 44px; font-weight: 800; line-height: 1; color: var(--brand-500); letter-spacing: -0.04em; }
+  .pp .code { font-size: 28px; font-weight: 800; line-height: 1; color: var(--brand-500); letter-spacing: -0.02em; }
+  .pp .name { font-size: 17px; font-weight: 600; margin-top: 14px; letter-spacing: -0.01em; }
+  .pp .pr { font-size: 28px; font-weight: 800; letter-spacing: -0.025em; margin-top: 14px; }
+  .pp .pr .c { font-size: 14px; color: var(--text-muted); font-weight: 600; margin-left: 3px; }
+  .pp .pn { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; margin-top: 4px; }
+
+  /* TIER TABLE */
+  .tier-strip {
+    margin-top: 56px;
+    padding: 40px 44px;
+    border-radius: 20px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 760px) { .tier-strip { grid-template-columns: repeat(2, 1fr); gap: 28px; padding: 32px; } }
+  .ts .name { font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+  .ts .m { font-size: 48px; font-weight: 800; letter-spacing: -0.035em; line-height: 1; color: var(--brand-500); margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .ts .q { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+
+  /* FORM */
+  .form-wrap { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 900px) { .form-wrap { grid-template-columns: 1fr; gap: 32px; } }
+  .form-side h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 16px; }
+  .form-side ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+  .form-side li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--text-secondary); line-height: 1.45; }
+  .form-side li::before { content: "✓"; color: var(--success); font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+
+  form {
+    padding: 36px;
+    border-radius: 20px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--text-secondary); }
+  .field input, .field select, .field textarea {
+    background: rgba(0,0,0,0.3); border: 1px solid var(--border-default);
+    border-radius: 10px; padding: 12px 14px; font-size: 15px;
+    color: var(--text-primary); font-family: var(--font-sans);
+    outline: none; transition: border-color 0.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-500); }
+  .field textarea { resize: vertical; min-height: 88px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+  form button { margin-top: 8px; }
+  .form-msg { font-size: 14px; color: var(--text-muted); padding-top: 8px; }
+  .form-msg.ok { color: var(--success); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border-subtle); padding: 48px 0; margin-top: 80px; }
+  footer .inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  footer .brand { display: flex; align-items: center; gap: 12px; }
+  footer .brand svg { width: 28px; height: 28px; }
+  footer .brand .wm { font-weight: 800; letter-spacing: -0.02em; font-size: 17px; }
+  footer .meta { font-size: 13px; color: var(--text-muted); letter-spacing: 0.02em; }
+  footer .links { display: flex; gap: 24px; font-size: 14px; color: var(--text-secondary); }
+  footer .links a:hover { color: var(--text-primary); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">
+      <svg viewBox="0 0 64 64"><g stroke="#FF7A00" stroke-width="7" stroke-linecap="round" fill="none"><line x1="10" y1="25" x2="54" y2="25"/><line x1="10" y1="39" x2="54" y2="39"/><line x1="28" y1="12" x2="22" y2="52"/><line x1="42" y1="12" x2="36" y2="52"/></g></svg>
+      <span class="wm">HashTap</span>
+      <span class="tag">Partner Programı</span>
+    </div>
+    <div class="links">
+      <a href="#neden">Neden partner</a>
+      <a href="#paketler">Paketler</a>
+      <a href="#tier">Tier</a>
+      <a href="index.html">Sunum</a>
+      <a href="#basvur" class="cta">Başvur</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="pill"><span class="dot"></span>B2B Reseller Kanalı · 2026</div>
+    <h1>Türkiye'nin her ilinde<br>bir <span class="accent">HashTap partneri.</span></h1>
+    <p class="sub">Yerel yazılım firmalarının HashTap'i kendi restoran müşterilerine satıp kurduğu B2B kanalı. Garantili %30–40 margin, 4 paket, lifetime lisans.</p>
+
+    <div class="cta-row">
+      <a href="#basvur" class="btn primary">
+        Partner başvurusu yap
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="index.html" class="btn secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+        Sunumu görüntüle
+      </a>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="v brand">30–40<span class="unit">%</span></div>
+        <div class="l">Garantili partner margin, hacme göre</div>
+      </div>
+      <div class="kpi">
+        <div class="v">4</div>
+        <div class="l">Standart paket · sabit MSRP</div>
+      </div>
+      <div class="kpi">
+        <div class="v">15<span class="unit">dk</span></div>
+        <div class="l">P0 SLA · HashTap → Partner</div>
+      </div>
+      <div class="kpi">
+        <div class="v">1.000<span class="unit">₺/ay</span></div>
+        <div class="l">Partner'a tekrar eden bakım payı</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="neden">
+  <div class="container">
+    <div class="eyebrow">Neden partner olunur</div>
+    <h2 class="section-title">Satış yapmayı biliyorsun.<br>Ürün <span class="accent">artık bizde.</span></h2>
+    <p class="section-sub">Yıllardır restoran ve işletmelere IT çözümü satıyorsun. Ürünü geliştirmek, destek altyapısı kurmak, cloud pipeline yönetmek senin işin değil. HashTap tüm ürün tarafını yapar; sen müşteri ilişkisine ve yerel kuruluma odaklanırsın.</p>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="ic">01</div>
+        <h3>Hazır ürün, hazır marka</h3>
+        <p>Kasiyer, Garson, KDS, Müşteri PWA ve Cloud Portal; hepsi hazır. Türkçe yerelleştirme, gelişmiş raporlama, e-fatura entegrasyonu dahil.</p>
+      </div>
+      <div class="value-card">
+        <div class="ic">02</div>
+        <h3>Garantili margin</h3>
+        <p>%30 (Tekil) ile %40 (Gold) arasında sabit iskonto. MSRP ülke genelinde tek fiyat. Fiyat savaşı yok, marjın yok olmaz.</p>
+      </div>
+      <div class="value-card">
+        <div class="ic">03</div>
+        <h3>Tekrar eden gelir</h3>
+        <p>Her kurulum aylık 1.000 ₺ partner bakım payı getirir. 50 restoran = ayda 50.000 ₺ recurring. Lifetime lisans, major upgrade'lerde ek satış.</p>
+      </div>
+      <div class="value-card">
+        <div class="ic">04</div>
+        <h3>Sertifikalı destek</h3>
+        <p>HCP (HashTap Certified Partner) eğitimi: 3–5 gün yüz yüze, sertifikasyon sınavı, 3 pilot kurulumda mentor eşliği.</p>
+      </div>
+      <div class="value-card">
+        <div class="ic">05</div>
+        <h3>Bölge koruması</h3>
+        <p>Silver ve Gold tier için bölge exclusivity. Aynı ilde iki partner yok; yaptığın satış senin kalır.</p>
+      </div>
+      <div class="value-card">
+        <div class="ic">06</div>
+        <h3>L2 destek HashTap'te</h3>
+        <p>Çözemediğin sorun için Partner Portal ticket + WhatsApp acil hattı. P0 için 15 dakika müdahale, 2 saat çözüm SLA'sı.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="paketler">
+  <div class="container">
+    <div class="eyebrow">4 paket · restoranın durumuna göre</div>
+    <h2 class="section-title">Menü &amp; Mobile: <span class="accent">kısıtlı lisans.</span><br>Pro &amp; Max: <span class="accent">full ERP.</span></h2>
+    <p class="section-sub">Mevcut ERP'si olan işletme sadece QR menü + ödeme katmanı alır (Menü / Mobile). Tam HashTap ERP'ye geçmek isteyen restoran Pro veya Max alır. Sonradan upgrade mümkün; fiyat farkı ödenir.</p>
+
+    <div class="pkg-preview">
+      <div class="pp">
+        <span class="lic-tag ltd">Kısıtlı</span>
+        <div class="code">Menü</div>
+        <div class="name">QR Menü + Ödeme</div>
+        <div class="pr">80.000<span class="c">₺</span></div>
+        <div class="pn">MSRP</div>
+      </div>
+      <div class="pp">
+        <span class="lic-tag ltd">Kısıtlı</span>
+        <div class="code">Mobile</div>
+        <div class="name">Menü + Donanım & Kurulum</div>
+        <div class="pr">120.000<span class="c">₺</span></div>
+        <div class="pn">MSRP</div>
+      </div>
+      <div class="pp full">
+        <span class="lic-tag fll">Full Lisans</span>
+        <div class="code">Pro</div>
+        <div class="name">Full HashTap + Eksik Donanım</div>
+        <div class="pr">200.000<span class="c">₺</span></div>
+        <div class="pn">MSRP · popüler</div>
+      </div>
+      <div class="pp full">
+        <span class="lic-tag fll">Full Lisans</span>
+        <div class="code">Max</div>
+        <div class="name">Full HashTap + Tam Kurulum</div>
+        <div class="pr">350.000<span class="c">₺</span></div>
+        <div class="pn">MSRP</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; font-size: 15px; color: var(--text-muted); display: flex; gap: 24px; flex-wrap: wrap;">
+      <div><span style="color: var(--brand-400); font-weight: 600;">Full lisans</span> 100.000 ₺ değerinde · Stok, KDS, garson, raporlama</div>
+      <div><span style="color: var(--text-secondary); font-weight: 600;">Kısıtlı lisans</span> 40.000 ₺ değerinde · Yalnızca QR menü + ödeme</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="tier">
+  <div class="container">
+    <div class="eyebrow">Hacim tier'ları</div>
+    <h2 class="section-title">Hacim arttıkça<br>margin <span class="accent">büyür.</span></h2>
+
+    <div class="tier-strip">
+      <div class="ts">
+        <div class="name">Tekil</div>
+        <div class="m">30%</div>
+        <div class="q">1 lisans</div>
+      </div>
+      <div class="ts">
+        <div class="name">Bronze</div>
+        <div class="m">33%</div>
+        <div class="q">10 lisans peşin</div>
+      </div>
+      <div class="ts">
+        <div class="name">Silver</div>
+        <div class="m">36%</div>
+        <div class="q">30 lisans peşin</div>
+      </div>
+      <div class="ts">
+        <div class="name" style="color: var(--brand-500);">Gold</div>
+        <div class="m" style="color: var(--brand-400);">40%</div>
+        <div class="q">50+ lisans · bölge exclusive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="basvur">
+  <div class="container">
+    <div class="eyebrow">Partner başvurusu</div>
+    <h2 class="section-title">Birlikte çalışalım.<br><span class="accent">İlk görüşme 30 dakika.</span></h2>
+
+    <div class="form-wrap">
+      <div class="form-side">
+        <h3>İlk görüşmede ne konuşuruz?</h3>
+        <ul>
+          <li>Firmanın mevcut müşteri tabanı, saha ekibi, coğrafi kapsamı</li>
+          <li>Hedeflediğin tier (Bronze / Silver / Gold) ve ölçek</li>
+          <li>Türkiye'de bölge çakışması olup olmadığı</li>
+          <li>HCP sertifikasyonu takvimi</li>
+          <li>Pilot kurulum adayı restoran(lar)</li>
+          <li>Hukuki ve finansal koşullar</li>
+        </ul>
+        <p style="margin-top: 28px; font-size: 14px; color: var(--text-muted); padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+          Form gönderildikten sonra 3 iş günü içinde dönüş sağlıyoruz. Acil iletişim için:<br>
+          <a href="mailto:info@hashtagworldcompany.com" style="color: var(--brand-500); font-weight: 600; font-family: var(--font-mono); font-size: 13px;">info@hashtagworldcompany.com</a>
+        </p>
+      </div>
+
+      <form id="partner-form" onsubmit="return submitForm(event)">
+        <div class="field-row">
+          <div class="field">
+            <label for="name">İsim Soyisim</label>
+            <input id="name" name="name" type="text" required placeholder="Mehmet Yılmaz">
+          </div>
+          <div class="field">
+            <label for="company">Firma</label>
+            <input id="company" name="company" type="text" required placeholder="Yılmaz Bilişim">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">E-posta</label>
+            <input id="email" name="email" type="email" required placeholder="mehmet@firma.com">
+          </div>
+          <div class="field">
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+90 5XX XXX XX XX">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="city">Şehir / Bölge</label>
+            <input id="city" name="city" type="text" required placeholder="İzmir · Ege Bölgesi">
+          </div>
+          <div class="field">
+            <label for="tier">Hedef tier</label>
+            <select id="tier" name="tier" required>
+              <option value="">Seçiniz…</option>
+              <option value="tekil">Tekil · 1 lisans (%30 margin)</option>
+              <option value="bronze">Bronze · 10 lisans (%33)</option>
+              <option value="silver">Silver · 30 lisans (%36)</option>
+              <option value="gold">Gold · 50+ lisans (%40, bölge exc.)</option>
+              <option value="belirsiz">Henüz emin değilim</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="background">Firmanın IT / POS / yazılım tecrübesi</label>
+          <textarea id="background" name="background" required placeholder="Kaç yıldır saha ekibin var? Şu an kaç aktif müşteri? Restoran sektörü tecrübesi?"></textarea>
+        </div>
+        <button type="submit" class="btn primary">
+          Başvuruyu gönder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <div class="form-msg" id="form-msg">Form doğrudan <span class="mono" style="font-family: var(--font-mono); color: var(--text-secondary);">info@hashtagworldcompany.com</span> adresine iletilir.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container inner">
+    <div class="brand">
+      <svg viewBox="0 0 64 64"><g stroke="#FF7A00" stroke-width="7" stroke-linecap="round" fill="none"><line x1="10" y1="25" x2="54" y2="25"/><line x1="10" y1="39" x2="54" y2="39"/><line x1="28" y1="12" x2="22" y2="52"/><line x1="42" y1="12" x2="36" y2="52"/></g></svg>
+      <span class="wm">HashTap</span>
+    </div>
+    <div class="links">
+      <a href="index.html">Sunum</a>
+      <a href="https://github.com/mertozbas/hashtap-b2b" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:info@hashtagworldcompany.com">E-posta</a>
+    </div>
+    <div class="meta">© 2026 Hashtag World Company · Gizlidir</div>
+  </div>
+</footer>
+
+<script>
+  function submitForm(e) {
+    e.preventDefault();
+    const f = e.target;
+    const data = Object.fromEntries(new FormData(f).entries());
+    // Open email client with prefilled body
+    const subject = `[HashTap Partner] ${data.company} · ${data.city}`;
+    const body = `İsim: ${data.name}\nFirma: ${data.company}\nŞehir: ${data.city}\nHedef tier: ${data.tier}\nE-posta: ${data.email}\nTelefon: ${data.phone}\n\nTecrübe:\n${data.background}\n\n---\nHashTap B2B landing sayfasından gönderildi.`;
+    window.location.href = `mailto:info@hashtagworldcompany.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const msg = document.getElementById('form-msg');
+    msg.textContent = 'E-posta uygulaman açıldı. Gönder tuşuna basarak başvurunu tamamla.';
+    msg.classList.add('ok');
+    return false;
+  }
+</script>
+</body>
+</html>
